@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4 offset-4">
+            <h1 class="text-center fw-bold mt-5">Login</h1>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label fw-bold">EMAIL</label>
+                    <input type="email" class="form-control" placeholder="name@example.com" formControlName="email">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label fw-bold">PASSWORD</label>
+                    <input type="password" class="form-control" placeholder="******" formControlName="password">
+                </div>
+                <div class="text-center d-grid">
+                    <button type="submit" class="btn btn-pink">LOGIN</button>
+                    <a routerLink="/signup" class="text-pink mt-3">Sing up</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

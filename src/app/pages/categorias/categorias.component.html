@@ -1,0 +1,98 @@
+<app-menu></app-menu>
+
+<main>
+    <h4><b>Categories</b></h4>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link text-secondary" [ngClass]="{'nav-active': type === 'expenses'}" (click)="change_type('expenses')">
+                <i class="bi bi-dash-circle"></i> Expenses
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-secondary" [ngClass]="{'nav-active': type === 'incomes'}" (click)="change_type('incomes')">
+                <i class="bi bi-plus-circle"></i> Income
+            </a>
+        </li>
+    </ul>
+    <div class="text-center mt-3 calendar">
+        <button type="button" class="btn btn-light btn-sm rounded"><i class="bi bi-chevron-left"></i></button> 
+        <button type="button" class="btn btn-light btn-sm fw-normal">{{fecha | date:'MMMM y'}}</button> 
+        <button type="button" class="btn btn-light btn-sm rounded"><i class="bi bi-chevron-right"></i></button> 
+    </div>
+    <div class="mt-2" *ngIf="type === 'expenses'">
+        <div class="text-center">
+            <h2 class="text-danger fw-bold">{{total_expenses | currency:"USD"}}</h2>
+            <span class="text-secondary">Total Expenses</span>
+        </div>
+        <div class="row mt-4">
+            <div class="col-4" *ngFor="let item of categories" [ngClass]="{'hide': item.transaction_type === 'income'}">
+                <div class="card pt-2 pb-1 mb-3" [ngClass]="'border-'+item.color">
+                    <div class="row g-0">
+                        <div class="col-md-4 icon text-center mt-2">
+                            <i [ngClass]="['bg-'+item.color]">
+                                <img [src]="'../../../assets/icons/'+item.icon+'.svg'">
+                            </i>
+                        </div>
+                        <div class="col-md-8">
+                            <span [ngClass]="'text-'+item.color">{{item.name}}</span>
+                            <h4><b>{{amount(item.transactions) | currency:"USD"}}</b></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4" data-bs-toggle="modal" data-bs-target="#modal_category">
+                <div class="card border-secondary border-line pt-4 pb-4 mb-3 text-center">
+                    <i class="bi bi-plus fs-4 text-secondary"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-2" *ngIf="type === 'incomes'">
+        <div class="text-center">
+            <h2 class="text-danger fw-bold">{{total_incomes | currency:"USD"}}</h2>
+            <span class="text-secondary">Total Incomes</span>
+        </div>
+        <div class="row mt-4">
+            <div class="col-4" *ngFor="let item of categories" [ngClass]="{'hide': item.transaction_type === 'expense'}">
+                <div class="card pt-2 pb-1 mb-3" [ngClass]="'border-'+item.color">
+                    <div class="row g-0">
+                        <div class="col-md-4 icon text-center mt-2">
+                            <i [ngClass]="['bg-'+item.color]">
+                                <img [src]="'../../../assets/icons/'+item.icon+'.svg'">
+                            </i>
+                        </div>
+                        <div class="col-md-8">
+                            <span [ngClass]="'text-'+item.color">{{item.name}}</span>
+                            <h4><b>{{amount(item.transactions) | currency:"USD"}}</b></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4" data-bs-toggle="modal" data-bs-target="#modal_category">
+                <div class="card border-secondary border-line pt-4 pb-4 mb-3 text-center">
+                    <i class="bi bi-plus fs-4 text-secondary"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<aside>
+    <app-transactions></app-transactions>
+</aside>
+
+<div class="modal fade" id="modal_category" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="fw-bold">New Category</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <app-create-new-category (newcategoryevent)="newcategory($event)"></app-create-new-category>
+            </div>
+        </div>
+    </div>
+</div>
+

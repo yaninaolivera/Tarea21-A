@@ -1,0 +1,42 @@
+.nav-link{
+    border: none !important;
+}
+
+.nav-tabs a {
+    padding: 8px 5px 15px 2px;
+    margin-right: 40px;
+}
+
+.nav-active {
+    border: none !important;
+    border-bottom: 3px solid hotpink !important;
+    color: hotpink !important;
+}
+
+.icon {
+    padding-top: 8.5px;
+}
+
+.icon i {
+    padding: 9px 15px;
+    border-radius: 50%;
+    color: white;
+    font-size: 25px;
+}
+
+.border-line {
+    border-style: dashed;
+}
+
+.hide {
+    display: none;
+}
+
+.calendar button {
+    margin: 0px 20px;
+    border-radius: 10px;
+}
+
+.calendar .rounded {
+    border-radius: 20px !important;
+}

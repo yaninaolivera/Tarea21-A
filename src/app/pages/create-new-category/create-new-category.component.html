@@ -1,0 +1,37 @@
+<form (ngSubmit)="onSubmit(categoryForm)" #categoryForm="ngForm">
+    <div class="mb-3">
+        <label>Name</label>
+        <input type="text" class="form-control" [(ngModel)]="category.name" name="name" id="name" required
+            #name="ngModel">
+        <div [hidden]="name.valid || name.pristine" class="text-danger">This field is required.</div>
+    </div>
+    <div class="mb-3">
+        <label>Type</label>
+        <select class="form-select" [(ngModel)]="category.transaction_type" name="type" id="type" required #type="ngModel">
+            <option value="">Seleccione . . .</option>
+            <option value="expense">Expense</option>
+            <option value="income">Income</option>
+        </select>
+        <div [hidden]="type.valid || type.pristine" class="text-danger">This field is required.</div>
+    </div>
+    <div class="mb-3">
+        <label>Color</label>
+        <div class="color text-center">
+            <label *ngFor="let item of colors" [ngClass]="['bg-'+item]" (click)="select_color(item)">
+                <span [ngClass]="'bg-'+item" [ngClass]="{'color-active': item === category.color}"></span>
+            </label>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label>Icon</label>
+        <div class="icon text-center">
+            <label *ngFor="let item of icons" [ngClass]="{'bg-white':true, 'icon-active': item === category.icon}"
+                (click)="select_icon(item)">
+                <i><img [src]="'../../../assets/icons/'+item+'.svg'"></i>
+            </label>
+        </div>
+    </div>
+    <div class="d-grid mb-3">
+        <button type="submit" class="btn btn-pink">Create</button>
+    </div>
+</form>

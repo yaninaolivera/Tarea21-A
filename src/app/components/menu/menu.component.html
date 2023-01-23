@@ -1,0 +1,14 @@
+<section>
+    <h4><b>{{title}}</b></h4>
+    <div class="d-grid mt-3">
+        <a routerLink="/categorias" [routerLinkActive]="['btn-pink']" class="btn text-start"><i class="bi bi-grid"></i> Categories</a>
+        <a routerLink="/transacciones" [routerLinkActive]="['btn-pink']" class="btn text-start"><i class="bi bi-credit-card"></i> Transactions</a>
+        <a routerLink="/presupuestos" [routerLinkActive]="['btn-pink']" class="btn text-start"><i class="bi bi-coin"></i> Budgets</a>
+    </div>
+    <div class="footer fixed-bottom">
+        <span>{{full_name}}</span>
+        <p class="text-secondary">{{email}}</p>
+        <a (click)="logout()" class="text-black">Log out</a>
+    </div>
+</section>
+

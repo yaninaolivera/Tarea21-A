@@ -1,0 +1,61 @@
+<h4 class="fw-bold">Transactions <i class="bi bi-filter filter" (click)="status_filter()"></i></h4>
+
+<form class="form" *ngIf="filter.status === true">
+    <h6 class="mt-3 fw-bold fs-6">Category</h6>
+    <label *ngFor="let item of data_categories"> 
+        <input type="checkbox" name="data_categories[]" (click)="categories_filter(item.id, $event)" [value]="item.id"> {{item.name}}
+    </label> 
+
+    <h6 class="mt-3 fw-bold fs-6">Amount</h6>
+    <div class="row">
+        <div class="col-6">
+            <label>MIN</label>
+            <input type="number" class="form-control" name="min" [(ngModel)]="filter.min" (keyup)="filter_transactions()">
+        </div>
+        <div class="col-6">
+            <label>MAX</label>
+            <input type="number" class="form-control" name="max" [(ngModel)]="filter.max" (keyup)="filter_transactions()">
+        </div>
+    </div>
+
+    <h6 class="mt-3 fw-bold fs-6">Date</h6>
+    <div class="row">
+        <div class="col-6">
+            <label>FROM</label>
+            <input type="date" class="form-control" name="from" [(ngModel)]="filter.from" (change)="filter_transactions()">
+        </div>
+        <div class="col-6">
+            <label>TO</label>
+            <input type="date" class="form-control" name="to" [(ngModel)]="filter.to" (change)="filter_transactions()">
+        </div>
+    </div>
+</form>
+
+<ul class="list-group mt-3">
+    <div *ngFor="let item of results">
+        <li class="list-group-item d-flex justify-content-between bg-light" *ngIf="item.operations.length > 0">
+            <span class="fs-3 pt-2 fw-bold">{{create_date(item.date) | date:'dd'}}</span>
+            <div class="ms-4 me-auto">
+                <span class="fw-bold">{{create_date(item.date) | date:'EEEE'}}</span>
+                <h5>{{create_date(item.date) | date:'MMMM, y'}}</h5>
+            </div>
+            <span class="text-danger fs-5 fw-bold" *ngIf="item.type === 'expense'">
+                {{amount(item.operations) | currency:'USD'}}
+            </span>
+            <span class="text-success fs-5 fw-bold" *ngIf="item.type === 'income'">
+                {{amount(item.operations) | currency:'USD'}}
+            </span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between" *ngFor="let i of item.operations">
+            <div class="icon-transaction text-center">
+                <i [ngClass]="['bg-'+i.color]"> <img [src]="'../../../assets/icons/'+i.icon+'.svg'"> </i>
+            </div>
+            <div class="ms-4 me-auto">
+                <span class="fw-normal">{{i.name}}</span>
+                <h5 class="fw-lighter">{{i.description}}</h5>
+            </div>
+            <span class="text-danger fs-5 fw-bold" *ngIf="i.type === 'expense'">-{{i.amount | currency:'USD'}}</span>
+            <span class="text-success fs-5 fw-bold" *ngIf="i.type === 'income'">+{{i.amount | currency:'USD'}}</span>
+        </li>
+    </div>
+</ul>

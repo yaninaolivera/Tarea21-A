@@ -1,0 +1,121 @@
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+section {
+    background-color: lightgray;
+    width: 18%;
+    height: 100vh;
+    float: left;
+    padding: 15px;
+}
+
+main {
+    width: 57%;
+    float: left;
+    padding: 15px;
+}
+
+aside {
+    width: 25%;
+    height: 100vh;
+    float: left;
+    padding: 15px;
+    border-left: 1px solid lightgray;
+    overflow-y: auto;
+}
+
+.bg-red{
+    background-color: red;
+}
+
+.text-red{
+    color: red;
+}
+
+.border-red{
+    border: 1px solid red;
+}
+
+.bg-orange {
+    background-color: orange;
+}
+
+.text-orange {
+    color: orange;
+}
+
+.border-orange {
+    border: 1px solid orange;
+}
+
+.bg-yellow {
+    background-color:gold
+}
+
+.text-yellow {
+    color: gold;
+}
+
+.border-yellow {
+    border: 1px solid gold;
+}
+
+.bg-green {
+    background-color: green;
+}
+
+.text-green {
+    color: green;
+}
+
+.border-green {
+    border: 1px solid green;
+}
+
+.bg-teal {
+    background-color: teal;
+}
+
+.text-teal {
+    color: teal;
+}
+
+.border-teal {
+    border: 1px solid teal;
+}
+
+.bg-cyan {
+    background-color: cyan;
+}
+
+.text-cyan {
+    color: cyan;
+}
+
+.border-cyan {
+    border: 1px solid cyan;
+}
+
+.bg-light-blue {
+    background-color: lightblue;
+}
+
+.text-light-blue {
+    color: lightblue;
+}
+
+.border-light-blue {
+    border: 1px solid lightblue;
+}
+
+.bg-blue {
+    background-color: blue;
+}
+
+.text-blue {
+    color: blue;
+}
+
+.border-blue {
+    border: 1px solid blue;
+}
