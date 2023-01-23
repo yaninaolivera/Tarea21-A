@@ -35,7 +35,7 @@ export class CreateNewCategoryComponent {
   onSubmit(form: NgForm): void {
     this.categoriasService.crear_categoria(JSON.stringify(this.category)).subscribe((data: any) => {
       this.newcategoryevent.emit('data');
-      alert("Creado")
+      //alert("Creado")
     })
   }
 

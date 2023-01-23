@@ -1,4 +1,4 @@
-# Actividad15
+# Actividad21
 
 -Proyecto en Angular
 
@@ -9,3 +9,4 @@
 - Refaim Daza Calixto
 - Doogie Juan Ricardo Velasquez Hualpa
 - Nisely Milagros Romero Salas
+- Rodrigo Vásquez Peralta

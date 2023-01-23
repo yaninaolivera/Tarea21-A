@@ -46,6 +46,7 @@ export class CategoriasComponent {
   }
 
   newcategory(category: string) {
+    document.getElementById("close_modal")?.click();
     this.ngOnInit();
   }
 }
